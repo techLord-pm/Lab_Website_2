@@ -74,10 +74,10 @@ function changeColor(color){
 function loadStatsPage() {
 
   var table = document.getElementById("stats_table");
-  var wins_table=document.getElementById("win_Table");
-  var wins = 0;
-  var losses = 0;
-  var draws = 0;
+  var wins_table = document.getElementById("win_Table"); //added win_Table id in table for team_stats.html
+  var winsCount = 0;
+  var lossesCount = 0;
+  var drawsCount = 0;
 
   for(var row = 2; row < table.rows.length; row++) {
 	var ithrow = table.rows[row];
@@ -86,24 +86,24 @@ function loadStatsPage() {
 
     	if(homeScore > awayScore) { //home team wins
 		ithrow.cells[4].innerHTML += "CU";
-		wins += 1;
+		winsCount += 1;
       }
 	else if(homeScore < awayScore){ //away team wins
 		ithrow.cells[4].innerHTML += ithrow.cells[1].innerHTML;
-		losses += 1;
+		lossesCount += 1;
       }
 	else{ // awayScore == homeScore, draw
 		ithrow.cells[4].innerHTML += "Draw!";
-		draws += 1;
+		drawsCount += 1;
 	}
     }
 
   var win = document.getElementById("wins");
-  win.innerHTML += wins;
+  win.innerHTML += winsCount;
   var loss = document.getElementById("losses");
-  loss.innerHTML += losses;
+  loss.innerHTML += lossesCount;
   var draw = document.getElementById("draws");
-  draw.innerHTML += draws;
+  draw.innerHTML += drawsCount;
 }
 /*
 	Football Player Information Page
