@@ -36,13 +36,13 @@ var players = [{name:"John Doe", img: "../resources/img/player1.jpg", alt:"Image
 
 				function viewStudentStats(id,toggle){
 					if(toggle==0) {
-	document.getElementById(id).style.visibility="hidden";
-	document.getElementById(id).style.height=0;
-}else if(toggle==1) {
-	document.getElementById(id).style.visibility="visible";
-	document.getElementById(id).style.height="auto";
-}
-}
+						document.getElementById(id).style.visibility="hidden";
+						document.getElementById(id).style.height=0;
+					}else if(toggle==1) {
+						document.getElementById(id).style.visibility="visible";
+						document.getElementById(id).style.height="auto";
+					}
+				}
 
 /*
 	Home Page:
@@ -74,32 +74,36 @@ function changeColor(color){
 function loadStatsPage() {
 
   var table = document.getElementById("stats_table");
-	var wins_table=document.getElementById("win_Table");
-	var wins = 0;
-	var losses = 0;
+  var wins_table=document.getElementById("win_Table");
+  var wins = 0;
+  var losses = 0;
+  var draws = 0;
 
   for(var row = 2; row < table.rows.length; row++) {
-		var ithrow = table.rows[row];
-		var homeScore = ithrow.cells[2].innerHTML;
-    var awayScore = ithrow.cells[3].innerHTML;
+	var ithrow = table.rows[row];
+	var homeScore = ithrow.cells[2].innerHTML;
+    	var awayScore = ithrow.cells[3].innerHTML;
 
-    if(homeScore > awayScore) {
-			ithrow.cells[4].innerHTML += "CU";
-			wins += 1;
+    	if(homeScore > awayScore) { //home team wins
+		ithrow.cells[4].innerHTML += "CU";
+		wins += 1;
       }
-		else if(homeScore==awayScore){
-			ithrow.cells[4].innerHTML += "Draw!";
-		}
-    else{ //awayScore>homeScore
-			ithrow.cells[4].innerHTML += ithrow.cells[1].innerHTML;
-			losses += 1;
+	else if(homeScore < awayScore){ //away team wins
+		ithrow.cells[4].innerHTML += ithrow.cells[1].innerHTML;
+		losses += 1;
       }
+	else{ // awayScore == homeScore, draw
+		ithrow.cells[4].innerHTML += "Draw!";
+		draws += 1;
+	}
     }
 
   var win = document.getElementById("wins");
   win.innerHTML += wins;
-	var loss = document.getElementById("losses");
+  var loss = document.getElementById("losses");
   loss.innerHTML += losses;
+  var draw = document.getElementById("draws");
+  draw.innerHTML += draws;
 }
 /*
 	Football Player Information Page
@@ -143,8 +147,17 @@ function loadStatsPage() {
 					  avg_r_yards   - the average number of rushing yards for the player's Buff career
 					  avg_rec_yards - the average number of receiving yards for the player's Buff career
 */
-function switchPlayers(playerNum){
+//did not complete 
+function loadPlayersPage(){
 	//anchor tag
 	<a href="#">stay</a
 	//<button class="btn btn-primary" onclick="switchPlayers()">Load Data</button>
+	//3. Set the onclick to call switchPlayers method (this will need to pass in the index inside the players array)
+	//4. Set the anchor tag's text to the player's name.
 }
+
+//did not complete
+function switchPlayers(playerNum){
+	//average yards
+}
+
